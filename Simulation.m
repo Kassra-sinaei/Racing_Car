@@ -57,8 +57,8 @@ classdef Simulation
             iter = 1;
             while((iter) * obj.deltaT_ <= obj.dt_)
                 % Compute tire forces
-                alpha_f = u(1) - atan2( obj.x_(2) + obj.lf_ * obj.x_(3), obj.x_(1) );
-                alpha_r = - atan2( obj.x_(2) - obj.lf_ * obj.x_(3) , obj.x_(1));
+                alpha_f = u(1) - atan( (obj.x_(2) + obj.lf_ * obj.x_(3)) / obj.x_(1) );
+                alpha_r = - atan2( (obj.x_(2) - obj.lf_ * obj.x_(3)) / obj.x_(1));
                 Fyf = obj.df_ * sin( obj.cf_ * atan(obj.bf_ * alpha_f ) );
                 Fyr = obj.dr_ * sin( obj.cr_ * atan(obj.br_ * alpha_r ) );
                 
